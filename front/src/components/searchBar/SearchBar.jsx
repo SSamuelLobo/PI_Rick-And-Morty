@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useState} from "react";
+import "./searchBar.css"
 
 
-const SearchBar = ({ onSearch }) =>{
+const SearchBar = ({ onSearch , deleteAllCharacters }) =>{
 
   const [id, setId] = useState("");
 
@@ -19,11 +20,21 @@ const SearchBar = ({ onSearch }) =>{
    onSearch(random);
  };
 
+ const handleDeleteAllCharacters = () =>{
+  deleteAllCharacters()
+}
+
   return (
-    <div>
-      <input type="search" value={id} onChange={handleChange} />
-      <button onClick={handleSearch}>Agregar</button>
-      <button onClick={handleRandomCharacter}>Random Character</button>
+    <div className="container-searchBar">
+      <form className={`container-searchBar__form ${id ? 'input-filled' : ''}`}>
+        <input  type="search" value={id} onChange={handleChange} id="id-character"/>
+        <label className="container-searchBar__form__label" htmlFor="id-character">
+          <span className="container-searchBar__form__label__span">Id-Character</span>
+        </label>
+      </form>
+      <a className="container-searchBar__a-Agregar" onClick={handleSearch}>Add</a>
+      <a className="container-searchBar__a-Random" onClick={handleRandomCharacter}>Random</a>
+      <a className="container-searchBar__a-deleteAllCharacters" onClick={handleDeleteAllCharacters}>Delete AllCharacters</a>
     </div>
   );
 }

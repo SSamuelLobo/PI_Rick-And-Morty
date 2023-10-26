@@ -1,42 +1,3 @@
-// import React from 'react';
-// import { connect } from 'react-redux';
-// import Card from '../Card';
-
-
-// const Favorites = ({ myFavorites }) => {
-//     return (
-//       <div>
-//         <h1>Personajes Favoritos</h1>
-//         <div className="favorite-characters">
-//           {myFavorites.map((character) => (
-//             <Card
-//               key={character.id}
-//               id={character.id}
-//               name={character.name}
-//               image={character.image}
-//             />
-//           ))}
-//         </div>
-//       </div>
-//     );
-//   };
-
-// const mapStateToProps = (state) => ({
-//     myFavorites: state.myFavorites, // Obtén myFavorites del estado global
-//   });
-
-//   export default connect(mapStateToProps)(Favorites);
-
-
-
-
-
-
-
-
-
-
-
 import { useSelector , useDispatch } from 'react-redux';
 import Cards from '../cards/Cards';
 import { filterCards, orderCards } from "../../redux/action";
@@ -50,11 +11,15 @@ import { useState } from 'react';
 
     const handleOrder = (event) =>{
       dispatch( orderCards(event.target.value))
-      setAux(true)
+      setAux(!aux)
     }
 
     const handleFilter = (event) =>{
-      dispatch( filterCards(event.target.value))
+      if(event.target.value === "Male" || event.target.value === "Female" || event.target.value === "Genderless" || event.target.value === "unknown"){
+        dispatch(filterCards(event.target.value))
+      } else {
+        dispatch(filterCards(null))
+      }
     }
 
     return(
@@ -66,6 +31,7 @@ import { useState } from 'react';
             </select>
 
             <select onChange={handleFilter}>
+            <option value="All">AllCharacters</option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
               <option value="Genderless">Genderless</option>
@@ -78,3 +44,10 @@ import { useState } from 'react';
   }
 
   export default Favorites;
+
+
+//   const handleAllCharacters = () =>{
+//     dispatch(allCharactersFav() )
+// }
+
+// <option value="AllCharacters" onChange={handleAllCharacters}>AllCharacters</option>

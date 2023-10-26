@@ -1,83 +1,30 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
-
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
-
-
-
-
-
-
-
-
-
 /* App.css */
-/* .App {
-  text-align: center;
-  font-family: Arial, sans-serif;
-  background-color: #f0f0f0;
-  padding: 20px;
-} */
 
-/* styles for Nav component */
-/* .Nav {
-  background-color: #333;
-  color: #fff;
-  padding: 10px;
-  margin-bottom: 20px;
-} */
+.background-video {
+  margin: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1; /* Coloca el video detrás de otros elementos */
+  object-fit: cover;
+}
 
-/* styles for Cards component (you can add more styles as needed) */
-/* .Cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-} */
 
-/* styles for individual Card component (you can add more styles as needed) */
-/* .Card {
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  margin: 10px;
-  padding: 20px;
-  text-align: center;
-} */
+/* Ajusta el ancho del componente App para que ocupe todo el ancho de la pantalla */
+.App {
+  margin: 0;
+  margin-top: 6em ;
+  border: rgb(246, 255, 0) solid;
+}
+
+.App__h1 {
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    cursor: pointer;
+    margin-top: 0px;
+    margin-left: 40%;
+    font-size: 80px;
+}

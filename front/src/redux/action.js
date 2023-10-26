@@ -16,3 +16,7 @@ export const filterCards = (gender) =>{
 export const orderCards = (order) =>{
     return { type: ORDER , payload: order }
 }
+
+// export const allCharactersFav = () =>{
+//     return { type: ALL_CHARACTERS_FAV }
+// }

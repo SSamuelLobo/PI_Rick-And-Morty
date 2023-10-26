@@ -23,15 +23,20 @@ const initialState = {
                 allCharacters: state.allCharacters.filter((character) =>{
                     return character.id !== parseInt(payload)
                 })
-
             }
 
-        case  FILTER:
-            const filterByGender = [...state.allCharacters].filter((favorite) => favorite.gender === payload);
-
-            return {
-                ...state,
-                myFavorites: filterByGender
+        case FILTER:
+            if (payload === null) {
+                return {
+                    ...state,
+                    myFavorites: [...state.allCharacters],
+                };
+                } else {
+                    const filterByGender = [...state.allCharacters].filter((favorite) => favorite.gender === payload);
+                    return {
+                        ...state,
+                        myFavorites: filterByGender,
+                    };
             }
 
         case  ORDER:
@@ -48,11 +53,16 @@ const initialState = {
                 ...state,
                 myFavorites: orden()
             }
-        default: 
+            
+            default: 
             return{
                 ...state
             }
-    };
-}
+        };
+    }
+    
+    export default rootReducer;
 
-export default rootReducer;
+
+    
+  

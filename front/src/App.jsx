@@ -4,7 +4,6 @@ import './App.css';
 /*Component to Render*/
 import Nav from './components/nav/Nav';
 import Form from './components/form/Form';
-import Error from './components/error/Error';
 import About from './components/about/About';
 import Detail from './components/details/Detail';
 import Cards from './components/cards/Cards.jsx';
@@ -14,9 +13,16 @@ import Favorites from "./components/favorites/Favorites"
 import { useState ,  useEffect } from 'react';
 import { Routes, Route , useLocation , useNavigate } from "react-router-dom"
 
+/*Global states*/
+import { useDispatch } from 'react-redux';
+import { removeFav } from "./redux/action"
+
 /*dependecies */
 import axios from 'axios';
 
+/*Video de Fondo */
+import backgroundVideo from './assets/Galaxiaa.mp4';
+// import backgroundVideo from './assets/Viaje.mp4';
 
 /*credentials */
 const EMAIL =  "samuel.sgcs768@gmail.com"
@@ -27,22 +33,40 @@ const App = () => {
    //Local states
   const [characters, setCharacters] = useState([]);
   const [access, setAccess] = useState(false);
+  const [showConfirmation, setShowConfirmation] = useState(false);
+
+
+
+  //Global States execution
+  const dispatch = useDispatch()
 
    //Routings
   const location = useLocation();
   const navigate = useNavigate();
 
-  //validation
+  //validation de acceso a la pagina
   const login = (userData) => {
     if (userData.password === PASSWORD && userData.email === EMAIL) {
       setAccess(true);
       navigate('/home');
     }
   };
+//salida de la pagina
+const logout = () => {
+  setShowConfirmation(true);
+};
+const handleLogoutConfirmed = () => {
+  setAccess(false);
+  setShowConfirmation(false);
+};
+const handleLogoutCancelled = () => {
+  setShowConfirmation(false);
+};
 
-  useEffect(() => {
-    !access && navigate('/');
-  }, [access]);
+//validation
+useEffect(() => {
+  !access && navigate('/');
+}, [access]);
 
 
 //Busca el caracter de la api , verifica que no este repetido y y actualiza el estado local
@@ -73,29 +97,46 @@ const onSearch = (id) => {
       }
 };
  
-
+/*Eliminar un personaje */
   const onClose = (id) => {
     const parsedId = parseInt(id);
     const filteredCharacters = characters.filter((character) => character.id !== parsedId);
     setCharacters(filteredCharacters);
+    dispatch(removeFav(id))
   };
+
+/*Eliminar todos los personajes */
+  const deleteAllCharacters = () =>{
+    setCharacters([])
+  }
 
   return (
     <div className="App">
-      {location.pathname !== '/' && <Nav onSearch={onSearch} />}
+      {location.pathname !== '/' && <Nav onSearch={onSearch} logout={logout} deleteAllCharacters={deleteAllCharacters}/>}
 
+        <video autoPlay loop muted className="background-video">
+          <source src={backgroundVideo} type="video/mp4" />
+        </video>
+      
+
+      {location.pathname === '/home' && <h1 className='App__h1'>Home</h1>}
+      
       <Routes>
         <Route path="/home" element={<Cards characters={characters} onClose={onClose} />} />
         <Route path="/about" element={<About />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route path='/detail/:id' element={<Detail />} />
-
-
         <Route path="/" element={<Form login={login} />} />
-        {/* estos 2 tiene una pelea de quien gana */}
-        {/* <Route path="/*" element={<Error />} /> */}
-
       </Routes>
+
+      {showConfirmation && (
+        <div className="confirmation-dialog">
+          <p>¿Estás seguro que quieres salir?</p>
+          <button onClick={handleLogoutConfirmed}>Sí</button>
+          <button onClick={handleLogoutCancelled}>No</button>
+        </div>
+      )}
+
     </div>
   );
 };

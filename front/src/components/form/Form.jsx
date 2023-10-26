@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import  validate  from "./validation"
 import "./validation.css"
+import "./form.css"
 
 
 const Form = ({login}) =>{
@@ -12,13 +13,11 @@ const Form = ({login}) =>{
 
     const [ errors , setErrors ] = useState({})
 
-    const handleChange = (event) =>{
+    const handleInPutChange = (event) =>{
         setUserData({
             ...userData,
             [event.target.name]: event.target.value 
         })
-
-        ;
     }
 
     const handleSubmit = (event) => {
@@ -38,25 +37,45 @@ const Form = ({login}) =>{
 
     return (
 
-        <form onSubmit={handleSubmit} >
-            <label htmlFor="email">Email</label>
-            <br />
-            <input type="email" name="email" value={userData.email} onChange={handleChange} className={errors.email && 'warning'} />
-            {errors.email && <p className='danger'>{errors.email}</p>}
-            
+            <div className="form-container">
 
-            <hr style = { { borderStyle : "none" } }/>
+                <h1 className="form-titulo">Rick and Morty</h1>
 
-            <label htmlFor="password">Password</label>
-            <br />
-            <input type="text" name="password" value={userData.password} onChange={handleChange} className={errors.password && 'warning'}/>
-            {errors.password && <p className='danger'>{errors.password}</p>}
+                <form className="form" onSubmit={handleSubmit}>
+                <h2 className="form-palabras">Login</h2>
+                <label htmlFor="email" className="form-palabras">Email</label>
+                <br />
+                <input
+                type="email"
+                name="email"
+                value={userData.email}
+                onChange={handleInPutChange}
+                className={errors.email && "warning"}
+                />
+                {errors.email && <p className="danger">{errors.email}</p>}
 
-            <hr style = { { borderStyle : "none" } }/>
+                <hr style={{ borderStyle: "none" }} />
+                <hr style={{ borderStyle: "none" }} />
+  
+                <label htmlFor="password" className="form-palabras">Password</label>
+                <br />
+                <input
+                type="password"
+                name="password"
+                value={userData.password}
+                onChange={handleInPutChange}
+                className={errors.password && "warning"}
+                />
+                {errors.password && <p className="danger">{errors.password}</p>}
+  
+                <hr style={{ borderStyle: "none" }} />
+                <hr style={{ borderStyle: "none" }} />
+  
+                <button type="submit">Submit</button>
 
-            <button type="submit" >Submit</button>
-            
-        </form>
+                </form>  
+
+            </div>
     )
 }
 

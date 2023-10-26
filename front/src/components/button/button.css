@@ -1,0 +1,60 @@
+li {
+    display: table-cell;
+    position: relative;
+    padding: 10px;
+  }
+  
+  li a {
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0.15em;
+    margin-left: -15px;
+    padding: 10px 20px;
+    position: relative;
+}
+
+  li a:hover{
+    color: #14f7ff;
+  }
+  
+  li a::after {
+    content: '';
+    
+    width: 0;
+    height: 3px;
+    background: #ffffff; /* Color de fondo en estado normal */
+    position: absolute;
+    left: 50%; /* Inicia en el centro */
+    bottom: -6px;
+    transition: 0.5s;
+    transform: translateX(-50%); /* Asegura que esté centrado */
+  }
+  
+  li a::after:nth-child(2) {
+    content: '';
+    width: 100%; /* Hace que el segundo subrayado ocupe el 100% del ancho restante */
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    transition: 0.5s;
+    background: #ffffff; /* Color de fondo en estado normal */
+  }
+  
+  li a:hover::after {
+    width: 100%; /* Hace que el primer subrayado se extienda al 50% del ancho del elemento */
+    background: #00ff00; /* Cambia el color del primer subrayado al hacer hover */
+  }
+  
+  li a:hover::after:nth-child(2) {
+    width: 100%; /* Hace que el segundo subrayado se extienda al 100% del ancho restante */
+    background: #00ff00; /* Cambia el color del segundo subrayado al hacer hover */
+  }
+  
+
+
+
+
+
+
+

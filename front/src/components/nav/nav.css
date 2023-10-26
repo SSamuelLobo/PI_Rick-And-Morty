@@ -1,0 +1,103 @@
+/*------------------------------------------------------------------------------*/
+/* Barra de Menu */
+
+.container{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: black;
+    padding: 15px 0px; /* Agrega relleno para mejorar la apariencia */
+    z-index: 10;
+}
+
+.container__nav-div-button{
+    display: inline-block;
+    position: absolute;
+    padding: 16px;
+    margin: 5px 5px;
+    top: 0px; 
+    left: 0px; 
+}
+
+.container__nav-searchBar{
+    margin: 10px; 
+}
+
+.container__nav-div-button-Logout{
+    display: inline-block;
+    position: absolute;
+    padding: 10px;
+    margin: 25px 30px;
+    top: 0px;
+    right: 0px;
+}
+
+.container__nav-div-button-Logout a {
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 0.15em;
+    padding: 10px 20px;
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.container__nav-div-button-Logout a:hover {
+    color: #14f7ff;
+}
+
+.container__nav-div-button-Logout a::after {
+    content: '';
+    width: 0;
+    height: 3px;
+    background: #ffffff; /* Color de fondo en estado normal */
+    position: absolute;
+    left: 50%; /* Inicia en el centro */
+    bottom: -6px;
+    transition: 0.5s;
+    transform: translateX(-50%); /* Asegura que esté centrado */
+  }
+  
+.container__nav-div-button-Logout a::after:nth-child(2) {
+    content: '';
+    width: 100%; /* Hace que el segundo subrayado ocupe el 100% del ancho restante */
+    position: absolute;
+    left: 0;
+    bottom: -6px;
+    transition: 0.5s;
+    background: #ffffff; /* Color de fondo en estado normal */
+}
+  
+.container__nav-div-button-Logout a:hover::after {
+    width: 100%; /* Hace que el primer subrayado se extienda al 50% del ancho del elemento */
+    background: #00ff00; /* Cambia el color del primer subrayado al hacer hover */
+}
+  
+.container__nav-div-button-Logout a:hover::after:nth-child(2) {
+    width: 100%; /* Hace que el segundo subrayado se extienda al 100% del ancho restante */
+    background: #00ff00; /* Cambia el color del segundo subrayado al hacer hover */
+}
+
+.container__nav-div-button FontAwesomeIcon {
+    width: 50px;
+}
+
+/*------------------------------------------------------------------------------*/
+/* iconos */
+
+/* Ajusta los iconos */
+.container__nav-div-button .icon {
+    position: relative;
+    color: rgb(255, 255, 255); /* Cambia el color a blanco */
+    font-size: 24px;
+    margin-top: 10px;
+    margin-right: -5px; /* Ajusta el margen derecho para separar los iconos */
+}
+
+.container__nav-div-button-Logout .icon{
+    position: relative;
+    color: rgb(255, 255, 255); /* Cambia el color a blanco */
+    font-size: 24px;
+}

@@ -1,11 +1,15 @@
 import React from 'react';
 import Card from '../card/Card';
 
+/*Styles*/
+import './cards.css';
+
 const Cards = ({characters, onClose}) => {
    return (
-   <div>
+   <div className="cards-container">
       {characters.map(({id, name, image, gender})=>{
-         return <Card 
+         return (
+            <Card 
             key={id}
             id={id}
             name={name}
@@ -13,7 +17,8 @@ const Cards = ({characters, onClose}) => {
             gender={gender}
             onClose={onClose}
          />
-      }) }
+         ) 
+      })}
    </div>);
 }
 

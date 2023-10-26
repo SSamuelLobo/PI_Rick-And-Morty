@@ -1,0 +1,256 @@
+/*-- Base Styles --*/
+.container-about {
+    /*Darle el tamaño que ocupe toda la pantalla*/
+    position: fixed; /* Fija la posición del div en la ventana */
+    top: 0; /* Coloca el div en la parte superior de la ventana */
+    left: 0; /* Coloca el div en la parte izquierda de la ventana */
+    width: 100%; /* Establece el ancho al 100% del ancho de la ventana */
+    height: 100%;
+
+/* Estilo de FONDO DE ABOUT*/
+    font-family: "Vibur", cursive;
+    background-image: url("../../assets/FondoAbout.jpg");
+}
+
+/*Efectos del About */
+
+:root {
+  /* Set neon color */
+  --neon-text-color: #f40;
+  --neon-border-color: #08f;
+}
+
+.container-about__h1-About-me{
+    position: absolute;
+    margin-top: 100px;
+    margin-left: 36%;
+    font-size: 60px;
+    width: 280px;
+    font-family: "Vibur", cursive;
+    font-style: italic;
+    color: #fff;
+    padding: 0.25em;
+    padding-left: 1em;
+    padding: auto;
+    border: 0.4rem solid #fff;
+    border-radius: 2rem;
+    text-transform: uppercase;
+    animation: flicker 1.5s infinite alternate;
+}
+
+.container-about__h1-About-me::-moz-selection {
+  background-color: var(--neon-border-color);
+  color: var(--neon-text-color);
+}
+
+.container-about__h1-About-me::selection {
+  background-color: var(--neon-border-color);
+  color: var(--neon-text-color);
+}
+
+.container-about__h1-About-me:focus {
+  outline: none;
+}
+
+/* Animate neon flicker */
+@keyframes flicker {
+    
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+      
+        text-shadow:
+            -0.1rem -0.01rem 1rem #fff,
+            0.1rem 0.1rem 1rem #fff,
+            0 0 1rem var(--neon-text-color),
+            0 0 2rem var(--neon-text-color),
+            0 0 3rem var(--neon-text-color),
+            0 0 4rem var(--neon-text-color),
+            0 0 5rem var(--neon-text-color);
+        
+        box-shadow:
+            0 0 .25rem #fff,
+            inset 0 0 .25rem #fff,
+            0 0 1rem var(--neon-border-color),
+            inset 0 0 1rem var(--neon-border-color),
+            0 0 2rem var(--neon-border-color),
+            inset 0 0 2rem var(--neon-border-color);        
+    }
+    
+    20%, 24%, 55% {        
+        text-shadow: none;
+        box-shadow: none;
+    }    
+}
+
+/*Efectos de mis datos*/
+
+.container-about__dates{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 14em;
+    margin-left: 8em;
+    width: 75em;
+}
+
+.container-about__dates__h3-p{
+    position: absolute;
+    margin-top: -50px;
+    margin-left: 700px;
+    font-size: 22px;
+    text-align: center;
+    line-height: 0.8;
+    width: 30em;
+    color: white;
+    animation: neon .08s ease-in-out infinite alternate;
+}
+
+.container-about__dates__h3-p__name{
+    font-size: 50px;
+}
+
+h3{
+    font-size: 35px;
+}
+
+.container-about__dates__h3-p__description{
+    font-size: 20px;
+}
+
+/*Imagen*/
+
+.container-about__img{
+    width: 400px;
+    border-radius: 100%;
+}
+
+/*-- Animation Keyframes --*/
+
+@keyframes neon {
+  from {
+    text-shadow:
+    0 0 6px rgba(202,228,225,0.92),
+    0 0 30px rgba(202,228,225,0.34),
+    0 0 12px rgba(30,132,242,0.52),
+    0 0 21px rgba(30,132,242,0.92),
+    0 0 34px rgba(30,132,242,0.78),
+    0 0 54px rgba(30,132,242,0.92);
+  }
+  to {
+    text-shadow:
+    0 0 6px rgba(202,228,225,0.98),
+    0 0 30px rgba(202,228,225,0.42),
+    0 0 12px rgba(30,132,242,0.58),
+    0 0 22px rgba(30,132,242,0.84),
+    0 0 38px rgba(30,132,242,0.88),
+    0 0 60px rgba(30,132,242,1);
+  }
+}
+
+.bandera{
+    position: absolute;
+    width: 160px;
+    height: 90px;
+    margin-top: -350px;
+    margin-left: 1350px;
+    transform: rotate(-15deg);
+}
+
+.amarillo{
+    border: yellow solid;
+    height: 30px;
+}
+
+.azul{
+    border: blue solid;
+    height: 30px;
+}
+
+.rojo{
+    border: red solid;
+    height: 30px;
+}
+
+.estrellas{
+    position: absolute;
+    margin-top: 15px;
+    margin-left: 5px;
+}
+
+.one{
+    position: absolute;
+    height: 1px;
+    width: 1px;
+    margin-top: 9px;
+    margin-left: 20px;
+    border: #fff solid;
+    border-radius: 100%;
+}
+
+.two{
+    position: absolute;
+    height: 1px;
+    width: 1px;
+    margin-top: -1px;
+    margin-left: 35px;
+    border: #fff solid;
+    border-radius: 100%;
+}
+
+.three{
+    position: absolute;
+    height: 1px;
+    width: 1px;
+    margin-top: -8px;
+    margin-left: 50px;
+    border: #fff solid;
+    border-radius: 100%;
+}
+
+.four{
+    position: absolute;
+    height: 1px;
+    width: 1px;
+    margin-top: -11px;
+    margin-left: 65px;
+    border: #fff solid;
+    border-radius: 100%;
+}
+
+.five{
+    position: absolute;
+    height: 1px;
+    width: 1px;
+    margin-top: -11px;
+    margin-left: 80px;
+    border: #fff solid;
+    border-radius: 100%;
+}
+
+.six{
+    position: absolute;
+    height: 1px;
+    width: 1px;
+    margin-top: -8px;
+    margin-left: 95px;
+    border: #fff solid;
+    border-radius: 100%;
+}
+
+.seven{
+    position: absolute;
+    height: 1px;
+    width: 1px;
+    margin-top: -1px;
+    margin-left: 110px;
+    border: #fff solid;
+    border-radius: 100%;
+}
+
+.eight{
+    position: absolute;
+    height: 1px;
+    width: 1px;
+    margin-top: 9px;
+    margin-left: 125px;
+    border: #fff solid;
+    border-radius: 100%;
+}

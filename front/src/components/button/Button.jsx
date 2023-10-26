@@ -1,11 +1,14 @@
 import { Link } from "react-router-dom"
+import "./button.css"
 
 const Button = ({ link , text }) =>{
     return(
         <Link to={link}>
-            <button>
+            <li>
+                <a> {/*hice un cambio importante aca */}
                 {text}
-            </button>
+                </a>
+            </li>
         </Link>
     )
 }

@@ -14,13 +14,17 @@ const validate = ( userData ) =>{
         errors.email = "No es un email valido.";
       }
 
-    const passwordRegex = /^(?=.*\d).{6,10}$/;
+    const passwordRegex = /^.{6,10}$/;
+    const passwordRegexnumber = /^(?=.*\d).{6,10}$/;
 
     if (!userData.password) {
         errors.password =  "La contraseña no puede estar vacía.";
 
       } else if (!passwordRegex.test(userData.password)) {
-        errors.password = "La contraseña debe tener entre 6 y 10 caracteres y al menos un número.";
+        errors.password = "La contraseña debe tener entre 6 y 10 caracteres ";
+
+      } else if (!passwordRegexnumber.test(userData.password)) {
+        errors.password = "La contraseña debe tener al menos un número.";
       }
       
     return errors;

@@ -1,0 +1,192 @@
+.card {
+    width: 300px;
+    height: 460px;
+    margin-top: 30px; /* Margen superior entre las tarjetas */
+    border-radius: 10%;
+    background: rgba(0, 0, 0, 0.5);
+    border: #fff7 0.125em solid;
+    text-shadow: 
+    0 0 .20em #fff7,
+    0 0 .30em #fff7;
+    box-shadow: 
+    inset 0 0 .5em #fff7,
+    0 0 .5em #fff7;
+}
+
+.blur-in-expand{
+    animation: blur-in-expand 0.4s linear both;
+}
+
+@keyframes blur-in-expand {
+    0% {
+        transform: scale(0);
+        filter: blur(12px);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        filter: blur(0);
+        opacity: 1;
+    }
+}
+
+.blur-out-expand{
+    animation:blur-out-expand 0.4s linear both
+}
+
+@keyframes blur-out-expand{0%{transform:scale(1);filter:blur(.01px);} 100%{transform:scale(2);filter:blur(12px);opacity:0}}
+
+.card__a{
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.favorite{
+    border: red 0.125em solid;
+    text-shadow: 
+    0 0 .20em red,
+    0 0 .30em red;
+    box-shadow: 
+    inset 0 0 .5em red,
+    0 0 .5em red;
+    animation:rotate-vertical-center 0.5s;
+}
+
+
+@keyframes rotate-vertical-center{
+    0%{transform:rotateY(0)}
+    100%{transform:rotateY(360deg)}
+}
+
+
+.card-a-favorite-like {
+    /*Position Boton onclose*/
+    display: flex; /* Usar flexbox para centrar horizontalmente */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+
+    /*Sizes*/
+    border-radius: 10%;
+    width: 40px;
+    height: 30px;
+    margin: 20px 20px;
+    padding: 10px 10px;
+    font-size: 20px;
+    cursor: pointer;
+
+    /*Apariencia*/
+    background-color: black;
+    border: red 0.125em solid;
+    text-shadow: 
+    0 0 .20em red,
+    0 0 .30em red;
+    box-shadow: 
+    inset 0 0 .5em red,
+          0 0 .5em red;
+}
+
+
+
+.card-a-favorite-unlike{
+    /*Position Boton onclose*/
+    display: flex; /* Usar flexbox para centrar horizontalmente */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+
+    /*Sizes*/
+    border-radius: 10%;
+    width: 40px;
+    height: 30px;
+    margin: 20px 20px;
+    padding: 10px 10px;
+    font-size: 20px;
+    cursor: pointer;
+
+    /*Apariencia*/
+    background-color: black;
+    border: #fff7 0.125em solid;
+    text-shadow: 
+    0 0 .20em #fff7,
+    0 0 .30em #fff7;
+    box-shadow: 
+    inset 0 0 .5em #fff7,
+          0 0 .5em #fff7;
+}
+
+
+
+.card-a-onclose {
+    /*Position Boton onclose*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /*Sizes*/
+    width: 40px;
+    height: 30px;
+    margin: 20px 20px;
+    padding: 10px 10px;
+    font-size: 20px;
+    cursor: pointer;
+
+    /*Apariencia*/
+    background-color: black;
+    border-radius: 10%;
+    border: #14f7ff 0.125em solid;
+    color: #14f7ff ;
+    text-shadow: 
+    0 0 .20em #fff7,
+    0 0 .30em #14f7ff;
+    box-shadow: 
+    inset 0 0 .5em #14f7ff,
+          0 0 .5em #14f7ff;
+}
+
+
+.card__buttons-h1{
+    color: #fff;
+}
+
+.card-name {
+    display: flex;
+    flex-direction: column; /* Cambia a dirección de columna para que el texto siga hacia abajo */
+    align-items: center; /* Centra el contenido verticalmente */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    border: rgb(0, 0, 0) solid;
+    background-color: rgb(0, 0, 0, 0.6);
+    color: rgb(255, 255, 255);
+    margin-top: 0px;
+    max-width: 300px; /* Ancho máximo de 300px */
+    font-size: 20px;
+    white-space: normal; /* Permitir que las palabras se envuelvan y ajusten */
+    word-wrap: break-word;
+}
+  
+  
+
+.red-bg {
+    border: red solid;
+    background-color: red;
+  }
+
+.card-image {
+    display: flex; /* Usar flexbox para centrar horizontalmente */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    border-radius: 100%;
+    height: 280px;
+    width: 300px;
+}
+
+.card-image:hover{
+    box-shadow: 
+    0 0 .20em #fff7,
+    0 0 .30em #14f7ff,
+    0 0 .40em #14f7ff,
+    0 0 .50em #14f7ff;
+    transition: all;
+}
+
+
+

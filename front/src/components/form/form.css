@@ -1,0 +1,54 @@
+.form-container{
+    /*Darle el tamaño que ocupe toda la pantalla*/
+    position: fixed; /* Fija la posición del div en la ventana */
+    top: 0; /* Coloca el div en la parte superior de la ventana */
+    left: 0; /* Coloca el div en la parte izquierda de la ventana */
+    width: 100%; /* Establece el ancho al 100% del ancho de la ventana */
+    height: 100%;
+    
+    /*Asignarle la imagen y el color*/
+    background-color: black;
+    background-image: url("../../assets/portada.jpg");
+    background-repeat: no-repeat;
+    background-size: 55% auto;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100vh; /* Para hacer que el div ocupe toda la altura de la ventana */
+    padding: 0 20px; /* Añadir un poco de espacio alrededor del formulario */
+}
+
+.form{
+    border-style: solid;
+    border-color: black;
+    border-radius: 20%;
+    background-color: rgba(255, 0, 0, 0.5); /* Gris transparente */
+    width: 250px; /* Ancho fijo en píxeles */
+    height: 300px; /* Alto fijo en píxeles */
+    padding: 50px ;
+    margin-right: 160px;
+}
+
+.form-palabras{
+    color: white;
+}
+
+.form-titulo{
+    /*Posicionamiento del titulo*/
+    position: absolute;
+    top: -40px; 
+    right: 50px; 
+    /*Aspecto de las letras*/
+    font-size: 5.5em;
+    color: rgb(2, 219, 230);
+    text-shadow: 0 0 5px #51FF0D,
+    0 0 10px #51FF0D,
+    0 0 15px #51FF0D,
+    0 0 20px #51FF0D,
+    0 0 25px #51FF0D;
+}
+
+  
+ 
+  
+ 

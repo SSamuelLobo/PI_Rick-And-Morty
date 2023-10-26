@@ -1,0 +1,24 @@
+/* Cards.css */
+
+.cards-container {
+    display: flex;
+    flex-wrap: wrap-reverse; /* Permite que las cartas se envuelvan a la siguiente fila */
+    white-space: nowrap;
+    margin-top: -80px;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  
+
+  
+  
+  /* Agrega una regla de medios (media query) para controlar el cambio de dirección */
+  @media screen and (min-width: 1250px) {
+    .cards-container {
+      flex-direction: row;
+    }
+}
+  
+  
+  
