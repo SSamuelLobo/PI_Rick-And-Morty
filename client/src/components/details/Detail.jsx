@@ -9,7 +9,7 @@ const Detail = () =>{
     const [character, setCharacter] = useState(null) //aqui me dicen que lo haga con un objeto vacio
 
     useEffect(() => {
-        axios(`https://rickandmortyapi.com/api/character/${id}`).then(({ data }) => {
+        axios(`http://localhost:3001/rickandmorty/character/${id}`).then(({ data }) => {
            if (data.name) {
               setCharacter(data);
            } else {

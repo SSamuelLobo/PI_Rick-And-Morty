@@ -25,8 +25,8 @@ import backgroundVideo from './assets/Galaxiaa.mp4';
 // import backgroundVideo from './assets/Viaje.mp4';
 
 /*credentials */
-const EMAIL =  "samuel.sgcs768@gmail.com"
-const PASSWORD = "xd123*"
+// const EMAIL =  "samuel.sgcs768@gmail.com"
+// const PASSWORD = "xd123*"
 
 const App = () => {
 
@@ -44,13 +44,26 @@ const App = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
+/*------------------------------------------------------------------------------------------------------------------------------------- */
+/*Hay Problemas aca */
   //validation de acceso a la pagina
-  const login = (userData) => {
-    if (userData.password === PASSWORD && userData.email === EMAIL) {
-      setAccess(true);
-      navigate('/home');
+  const login = async (userData) => {
+    try {
+      const { email, password } = userData;
+      const URL = 'http://localhost:3001/rickandmorty/login/';
+      const { data } = await axios(`${URL}?email=${email}&password=${password}`);
+
+      const { access } = data;
+      setAccess(data);
+      access && navigate('/home');
+    } catch (error) {
+      throw Error(error.message);
     }
-  };
+ }
+/*------------------------------------------------------------------------------------------------------------------------------------- */
+
+
+  
 //salida de la pagina
 const logout = () => {
   setShowConfirmation(true);
@@ -68,34 +81,63 @@ useEffect(() => {
   !access && navigate('/');
 }, [access]);
 
-
+/*---------------------------------------------------------------------------------------------------------------------------*/
+/*Problemas Se estan repitiendo los personajes */
 //Busca el caracter de la api , verifica que no este repetido y y actualiza el estado local
-const onSearch = (id) => {
+const onSearch = async (id) => {
+  try {
+      const characterRepeated = [...characters].map((char) => char.id);
+  
+      console.log(characterRepeated); //debo eliminar esto
+  
+      if (!characterRepeated.includes(Number(id))) {
+          const { data } = await axios(`http://localhost:3001/rickandmorty/character/${id}`);
+          // ruta dinámica:
+          const character = {
+            id: parseInt(data.id),
+            status: data.status,
+            name: data.name,
+            species: data.species,
+            origin: data.origin,
+            image: data.image,
+            gender: data.gender,
+          };
+  
+          if (character) {
+            setCharacters((oldChars) => [...oldChars, character]);
+          }
 
-   const characterRepeated = [...characters].map((char) => char.id);
-
-   console.log(characterRepeated); //debo eliminar esto
-
-   if (!characterRepeated.includes(Number(id))) {
-
-     // ruta dinámica:
-     axios(`https://rickandmortyapi.com/api/character/${id}`)
-       .then(({ data }) => {
-
-         // data es un objeto que es la respuesta de la api
-         // verifica que la api trajo una respuesta, podría ser data.cualquier propiedad
-         if (data.name) {
-           setCharacters((oldChars) => [...oldChars, data]);
-         }
-       })
-       // .then no sabe manejar errores, por eso hay que usar .catch
-       .catch(() => {
-         alert("¡No hay personajes con este ID!");
-       });
-   } else {
-         window.alert('¡Este personaje ya se encuentra en pantalla!');
+      } else {
+      window.alert('¡Este personaje ya se encuentra en pantalla!');
       }
+
+  } catch (error) {
+      alert("¡No hay personajes con este ID!");
+  }
 };
+
+// const onSearch = async (id) => {
+//   const characterRepeated = characters.map((char) => char.id);
+
+//   if (!characterRepeated.includes(Number(id))) {
+//     try {
+//       const response = await axios.get(`http://localhost:3001/rickandmorty/character/${id}`);
+//       const data = response.data;
+
+//       if (data.name) {
+//         setCharacters((oldChars) => [...oldChars, data]);
+//       } else {
+//         alert('¡No hay personajes con este ID!');
+//       }
+//     } catch (error) {
+//       alert('Error al buscar el personaje: ' + error.message);
+//     }
+//   } else {
+//     window.alert('¡Este personaje ya se encuentra en pantalla!');
+//   }
+// };
+/*------------------------------------------------------------------------------------------------------------------------------------- */
+
  
 /*Eliminar un personaje */
   const onClose = (id) => {
