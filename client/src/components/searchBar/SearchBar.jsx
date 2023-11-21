@@ -27,7 +27,7 @@ const SearchBar = ({ onSearch , deleteAllCharacters }) =>{
   return (
     <div className="container-searchBar">
       <form className={`container-searchBar__form ${id ? 'input-filled' : ''}`}>
-        <input  type="search" value={id} onChange={handleChange} id="id-character"/>
+        <input  type="search" value={id} onChange={handleChange} id="id-character" autoComplete="off"/>
         <label className="container-searchBar__form__label" htmlFor="id-character">
           <span className="container-searchBar__form__label__span">Id-Character</span>
         </label>

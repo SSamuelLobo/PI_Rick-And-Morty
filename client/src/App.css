@@ -16,7 +16,6 @@
 .App {
   margin: 0;
   margin-top: 6em ;
-  border: rgb(246, 255, 0) solid;
 }
 
 .App__h1 {
@@ -27,4 +26,64 @@
     margin-top: 0px;
     margin-left: 40%;
     font-size: 80px;
+}
+
+.confirmation-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  border-radius: 5%;
+  padding: 20px 20px;
+  border: 1px solid #000000;
+  width: 500px;
+  height: 200px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.confirmation-dialog__p{
+  margin-top: -20px;
+  font-size: 25px;
+}
+.confirmation-dialog-yes {
+  position: absolute;
+  margin-top: 80px; /* Añade espacio entre los botones */
+  margin-left: 160px;
+  width: 60px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.confirmation-dialog-no {
+  position: absolute;
+  margin-top: 80px; /* Añade espacio entre los botones */
+  margin-left: -160px;
+  width: 60px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.toggle-audio-button{
+  position: absolute;
+  top: 140px;
+  left: 50px;
+  height: 30px;
+  width: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.icon-audio{
+  color: white;
+  height: 30px;
+  width: 40px;
 }

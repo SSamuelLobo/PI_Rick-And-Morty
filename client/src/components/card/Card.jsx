@@ -21,7 +21,7 @@ import "./card.css" ;
                dispatch( addFav( { id, name, image, onClose, gender } ) );
             }
       }
-
+      console.log(myFavorites);
       useEffect(() => {
             // Comprueba si el personaje está en tus favoritos
          myFavorites?.forEach((fav) => {

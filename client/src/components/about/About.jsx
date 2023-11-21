@@ -2,13 +2,12 @@ import React, { useState, useEffect } from "react";
 import perfil1 from "../../assets/perfil1.jpg";
 import perfil2 from "../../assets/perfil2.jpg";
 import perfil3 from "../../assets/perfil3.jpg";
-import perfil4 from "../../assets/perfil4.jpg";
 import "./about.css"
 
 const About = () =>{
 
     const [currentImage, setCurrentImage] = useState(0);
-    const images = [perfil1, perfil2, perfil3 , perfil4 ];
+    const images = [perfil1, perfil2, perfil3];
 
     useEffect(() => {
         const interval = setInterval(() => {

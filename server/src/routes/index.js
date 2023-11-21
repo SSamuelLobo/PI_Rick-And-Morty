@@ -1,7 +1,7 @@
 /* controllers */
-const { login } = require('../controllers/login');
+const { login , createUser } = require('../controllers/login');
 const { getCharById } = require('../controllers/getCharById');
-const { postFav, deleteFav } = require('../controllers/handleFavorites');
+const { postFav, deleteFav , deleteAllFav } = require('../controllers/handleFavorites');
 
 /* express config */
 const express = require('express');
@@ -13,9 +13,13 @@ router.get('/character/:id', getCharById);
 
 router.get('/login', login);
 
+router.post('/login', createUser);
+
 router.post('/fav', postFav);
 
 router.delete('/fav/:id', deleteFav);
+
+router.delete('/fav/deleteAllFav', deleteAllFav)
 
 
 module.exports = {

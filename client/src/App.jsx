@@ -22,19 +22,20 @@ import axios from 'axios';
 
 /*Video de Fondo */
 import backgroundVideo from './assets/Galaxiaa.mp4';
-// import backgroundVideo from './assets/Viaje.mp4';
 
-/*credentials */
-// const EMAIL =  "samuel.sgcs768@gmail.com"
-// const PASSWORD = "xd123*"
+/* ICONOS */
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome" ;
+import { faVolumeXmark , faVolumeHigh } from "@fortawesome/free-solid-svg-icons"
+
 
 const App = () => {
 
    //Local states
-  const [characters, setCharacters] = useState([]);
-  const [access, setAccess] = useState(false);
-  const [showConfirmation, setShowConfirmation] = useState(false);
-
+   const [characters, setCharacters] = useState([]);
+   const [access, setAccess] = useState(false);
+   const [showConfirmation, setShowConfirmation] = useState(false);
+   const [audioPlaying, setAudioPlaying] = useState(true);
+   
 
 
   //Global States execution
@@ -152,14 +153,45 @@ const onSearch = async (id) => {
     setCharacters([])
   }
 
+
+/*Reproduce la musica*/
+    const toggleAudio = () => {
+    const audio = document.getElementById("background-audio");
+    if (audio) {
+      if (audioPlaying) {
+        audio.pause();
+      } else {
+      audio.play();
+      }
+      setAudioPlaying(!audioPlaying);
+    }
+  };
+
+
   return (
     <div className="App">
       {location.pathname !== '/' && <Nav onSearch={onSearch} logout={logout} deleteAllCharacters={deleteAllCharacters}/>}
+      
+      {location.pathname !== '/' && 
+        <audio id="background-audio" loop autoPlay>
+          <source src="./src/assets/Rick Astley.mp3" type="audio/mpeg" />
+        </audio>
+      }
+
+      {location.pathname !== '/' && 
+        <button className="toggle-audio-button" onClick={toggleAudio}>
+            {audioPlaying ? 
+              <FontAwesomeIcon icon={faVolumeHigh} className="icon-audio"/> : 
+              <FontAwesomeIcon icon={faVolumeXmark} className="icon-audio"/>
+            }
+        </button>
+      }
 
         <video autoPlay loop muted className="background-video">
           <source src={backgroundVideo} type="video/mp4" />
         </video>
-      
+
+        
 
       {location.pathname === '/home' && <h1 className='App__h1'>Home</h1>}
       
@@ -173,9 +205,9 @@ const onSearch = async (id) => {
 
       {showConfirmation && (
         <div className="confirmation-dialog">
-          <p>¿Estás seguro que quieres salir?</p>
-          <button onClick={handleLogoutConfirmed}>Sí</button>
-          <button onClick={handleLogoutCancelled}>No</button>
+          <p className="confirmation-dialog__p">Are you sure you want to go out?</p>
+          <button className="confirmation-dialog-yes" onClick={handleLogoutConfirmed}>Yes</button>
+          <button className="confirmation-dialog-no" onClick={handleLogoutCancelled}>No</button>
         </div>
       )}
 

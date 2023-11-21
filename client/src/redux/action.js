@@ -1,4 +1,4 @@
-import { ADD_FAV , REMOVE_FAV , FILTER , ORDER } from "./types"
+import { ADD_FAV , REMOVE_FAV , DELETE_ALL , FILTER , ORDER } from "./types"
 
 import axios from "axios";
 const endpoint = 'http://localhost:3001/rickandmorty/fav';
@@ -32,7 +32,22 @@ export const removeFav = (id) => {
      }
  };
 };
-    
+
+
+export const deleteAllFav = ()=>{
+    return async (dispatch) => {
+        try {
+            const { data } = await axios.delete(`${endpoint}/deleteAllFav`)
+            return dispatch({
+                type: DELETE_ALL,
+                payload: data,
+            });
+        } catch (error) {
+            throw Error(error.message);
+        }
+    };
+}
+
 
 export const filterCards = (gender) =>{
     return { type: FILTER , payload: gender }

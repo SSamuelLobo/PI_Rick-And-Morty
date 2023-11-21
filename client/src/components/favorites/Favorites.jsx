@@ -1,7 +1,11 @@
 import { useSelector , useDispatch } from 'react-redux';
 import Cards from '../cards/Cards';
-import { filterCards, orderCards } from "../../redux/action";
+import { filterCards, orderCards , deleteAllFav  } from "../../redux/action";
 import { useState } from 'react';
+
+/*Styles*/
+import "./favorites.css" ;
+
 
   const Favorites = () =>{
 
@@ -22,23 +26,35 @@ import { useState } from 'react';
       }
     }
 
+    const handleDeleteAllFavorite = () =>{
+      dispatch(deleteAllFav())
+    }
+    
     return(
-        <div>
-            <h1>Personajes Favoritos</h1>
-            <select onChange={handleOrder}>
+        <div className='favorite-container'>
+            <h1 className='favorite-container__h1'>Favorites</h1>
+            
+            <div className='favorite-container__select-container'>
+            
+            <select className='favorite-container__select-container__select1' onChange={handleOrder}>
+            <option selected disabled>Order</option>
             <option value="A">Ascendente</option>
             <option value="D">Descendente</option>
             </select>
-
-            <select onChange={handleFilter}>
+            
+            <select className='favorite-container__select-container__select2' onChange={handleFilter}>
+            <option selected disabled>Gender</option>
             <option value="All">AllCharacters</option>
               <option value="Male">Male</option>
               <option value="Female">Female</option>
               <option value="Genderless">Genderless</option>
               <option value="unknown">unknown</option>
             </select>
+            
+            <button className='favorite-container__select-container__button-delete' onClick={handleDeleteAllFavorite}>Delete AllFavorites</button>
+            </div>
 
-            <Cards characters= {myFavorites}/>
+            <Cards characters={myFavorites} className={aux ? 'descend-row' : ''} />
         </div>
       )
   }

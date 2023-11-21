@@ -1,4 +1,4 @@
-import { ADD_FAV , REMOVE_FAV , FILTER , ORDER } from "./types"
+import { ADD_FAV , REMOVE_FAV , DELETE_ALL ,  FILTER , ORDER } from "./types"
 
 const initialState = {
     myFavorites: [],
@@ -6,20 +6,31 @@ const initialState = {
  };
  
  const rootReducer = ( state = initialState , { type , payload} ) => {
+    console.log(state);
      switch(type){
          case  ADD_FAV:
             return { 
                 ...state, 
                 myFavorites: payload, 
-                allCharacters: payload 
+                allCharacters: payload
             };
 //Hay un problemita aca
         case  REMOVE_FAV:
             return { 
                 ...state,
-                myFavorites: payload 
+                myFavorites: payload,
+                allCharacters: payload
             };
 
+        case DELETE_ALL:
+                if (payload === null) {
+                    return {
+                        ...state,
+                        myFavorites: myFavorites.splice(0, myFavorites.length),
+                        allCharacters: allCharacters.splice(0, allCharacters.length)
+                    };
+                }
+                
         case FILTER:
             if (payload === null) {
                 return {
@@ -53,10 +64,11 @@ const initialState = {
             return{
                 ...state
             }
-        };
-    }
-    
-    export default rootReducer;
+        }; 
+}
+
+
+export default rootReducer;
 
 
     

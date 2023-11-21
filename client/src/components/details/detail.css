@@ -1,7 +1,9 @@
 .detail-container{
     width: 70em;
     height: 30em;
-    margin: 3em 12em; 
+    /* margin: 3em 12em;  */
+    margin-top: 150px;
+    margin-left: 200px;
     border-radius:320px;
     background-color: rgb(0, 0, 0, 0.5);
     border: #fff7 0.125em solid;
